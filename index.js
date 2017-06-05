@@ -23,6 +23,7 @@ var defaultOpts = {
   cache: false,
   titleHolder: '{TITLE}',
   bodyHolder: '{BODY}',
+  baseUrlHolder: '{BASEURL}',
   indexName: 'index',
   baseUrl: '/'
 };
@@ -98,6 +99,7 @@ module.exports = function (options) {
     var layout = r[0];
     var content = r[1];
     var html = utility.replace(layout, options.titleHolder, content.title);
+    html = utility.replace(html, options.baseUrlHolder, options.baseUrl);
     html = utility.replace(html, options.bodyHolder, content.body);
 
     if (options.cache) {
